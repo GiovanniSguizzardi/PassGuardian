@@ -57,4 +57,57 @@ O PassGuardian foi pensado para **reduzir ao máximo o risco de vazamento de dad
 ## 🧱 Arquitetura
 
 O projeto segue uma arquitetura simples e organizada:
+<img width="451" height="559" alt="image" src="https://github.com/user-attachments/assets/fb5e608d-3626-4210-977f-9b2d09c65917" />
 
+---
+
+## 🧰 Tecnologias Utilizadas
+
+- **Kotlin**
+- **Jetpack Compose (Material 3)**
+- **Firebase Authentication**
+- **Firebase Firestore**
+- **Android Keystore**
+- **BiometricPrompt**
+- **Credential Manager (Google Sign-In)**
+- **Coroutines & StateFlow**
+
+---
+
+## 🔑 Configuração do Firebase
+
+Este repositório **não inclui** o arquivo `google-services.json` por motivos de segurança.
+
+Para rodar o projeto localmente:
+
+1. Crie um projeto no Firebase Console
+2. Ative:
+   - Authentication (Google + SMS)
+   - Firestore
+3. Baixe o `google-services.json`
+4. Coloque o arquivo em: `app/google-services.json`
+
+> Certifique-se de restringir sua API Key por **Package Name + SHA-1** no Google Cloud Console.
+
+---
+
+## 🚀 Status do Projeto
+
+- ✅ Funcional
+- ✅ Estável para uso pessoal/familiar
+- 🧊 Funcionalidades congeladas (v1.0)
+
+Novas funcionalidades só devem ser adicionadas se houver necessidade real de uso.
+
+---
+
+## 📄 Licença
+
+Este projeto é de uso pessoal e educacional.  
+Sinta-se à vontade para estudar, adaptar ou evoluir o código conforme sua necessidade.
+
+---
+
+## 🙌 Considerações Finais
+
+O PassGuardian foi desenvolvido com foco em **segurança prática**, evitando complexidade desnecessária e priorizando a experiência de usuários comuns.
