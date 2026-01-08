@@ -38,14 +38,15 @@ class PasswordViewModel(
         }
     }
 
-    fun loadOne(id: String) {
+    fun loadOneDecrypted(id: String) {
         viewModelScope.launch {
             _loading.value = true
             try {
                 _error.value = null
-                _current.value = repo.get(id)
+                _current.value = repo.getDecrypted(id)
             } catch (e: Exception) {
-                _error.value = e.message ?: "Erro ao carregar senha"
+                _error.value =
+                    e.message ?: "Erro ao descriptografar. (Se você reinstalou o app, a chave pode ter sido perdida.)"
             } finally {
                 _loading.value = false
             }
@@ -56,12 +57,18 @@ class PasswordViewModel(
         _current.value = null
     }
 
-    fun add(title: String, password: String, onDone: () -> Unit) {
+    fun add(title: String, username: String, password: String, onDone: () -> Unit) {
         viewModelScope.launch {
             _loading.value = true
             try {
                 _error.value = null
-                repo.add(title.trim(), password)
+                repo.addEncrypted(
+                    PasswordItem(
+                        title = title.trim(),
+                        username = username.trim(),
+                        password = password
+                    )
+                )
                 loadList()
                 onDone()
             } catch (e: Exception) {
@@ -72,12 +79,19 @@ class PasswordViewModel(
         }
     }
 
-    fun update(id: String, title: String, password: String, onDone: () -> Unit) {
+    fun update(id: String, title: String, username: String, password: String, onDone: () -> Unit) {
         viewModelScope.launch {
             _loading.value = true
             try {
                 _error.value = null
-                repo.update(id, title.trim(), password)
+                repo.updateEncrypted(
+                    id,
+                    PasswordItem(
+                        title = title.trim(),
+                        username = username.trim(),
+                        password = password
+                    )
+                )
                 loadList()
                 onDone()
             } catch (e: Exception) {

@@ -1,3 +1,8 @@
+# Firebase / Google Services
+app/google-services.json
+google-services.json
+
+# GITIGNORE default
 *.iml
 .gradle
 /local.properties

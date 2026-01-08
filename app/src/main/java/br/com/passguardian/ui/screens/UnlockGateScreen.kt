@@ -21,10 +21,7 @@ import br.com.passguardian.viewmodel.AuthState
 import br.com.passguardian.viewmodel.AuthViewModel
 
 @Composable
-fun UnlockGateScreen(
-    authVm: AuthViewModel,
-    onUnlocked: () -> Unit
-) {
+fun UnlockGateScreen(authVm: AuthViewModel, onUnlocked: () -> Unit) {
     val context = LocalContext.current
     val activity = context as? FragmentActivity
     val gate = remember { AccessGate(context) }
